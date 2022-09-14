@@ -12,17 +12,20 @@ services:
       - goof-mongo
     depends_on:
       - goof-mongo
+    network_mode: "bridge"
   goof-mongo:
     container_name: goof-mongo
     image: mongo
     ports:
       - "27017:27017"
+    network_mode: "bridge"
   good-mysql:
     container_name: goof-mysql
-    platform: linux/x86_64
+    # platform: linux/x86_64
     image: mysql:5
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: acme
     ports:
       - "3306:3306"
+    network_mode: "bridge"
